@@ -18,12 +18,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="ZindîTok - Live Kurdish TV">
     <meta property="og:description" content="Watch live Kurdish TV channels.">
-    <meta property="og:image" content="https://zinditok.github.io/sharing_image.png">
-    <meta property="og:url" content="zinditok.github.io">
+    <meta property="og:image" content="https://koerddev.github.io/ZindiTok/sharing_image.png">
+    <meta property="og:url" content="REPLACE_WITH_ABSOLUTE_SITE_URL">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ZindîTok - Live Kurdish TV">
     <meta name="twitter:description" content="Watch live Kurdish TV channels.">
-    <meta name="twitter:image" content="https://zinditok.github.oi/sharing_image.png">
+    <meta name="twitter:image" content="https://koerddev.github.io/ZindiTok/sharing_image.png">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3392542722154116"
      crossorigin="anonymous"></script>
@@ -180,7 +180,7 @@
                floating bottom toolbar isn't accounted for by
                safe-area-inset-bottom, so this needs real headroom on top
                of it to avoid sitting behind that browser chrome. */
-            bottom: calc(0px + env(safe-area-inset-bottom));
+            bottom: calc(70px + env(safe-area-inset-bottom));
             transform: translateX(-50%);
             display: flex;
             gap: 4px;
@@ -390,6 +390,224 @@
             text-align: center;
             color: rgba(255,255,255,0.5);
             padding: 0 20px;
+        }
+
+        /* Movies tab */
+        #movies-view {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .movies-title {
+            font-size: 20px;
+            font-weight: 800;
+            padding: 0 20px;
+            margin-bottom: 14px;
+        }
+
+        .movie-search {
+            margin: 0 20px 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 10px 14px;
+        }
+
+        .movie-search svg {
+            width: 18px;
+            height: 18px;
+            color: rgba(255,255,255,0.6);
+            flex-shrink: 0;
+        }
+
+        .movie-search input {
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .movie-search input::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+
+        .movie-categories {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 0 20px 18px;
+            scrollbar-width: none;
+        }
+
+        .movie-categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-pill {
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.75);
+            border-radius: 16px;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .category-pill.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 0 20px;
+        }
+
+        .movie-card {
+            cursor: pointer;
+        }
+
+        .movie-card img {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            object-fit: cover;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .movie-card .mc-title {
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 1.25;
+        }
+
+        .movie-card .mc-meta {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 2px;
+        }
+
+        .movies-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            padding: 40px 20px;
+        }
+
+        /* Movie player / detail page */
+        #movie-player-view {
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: env(safe-area-inset-top);
+        }
+
+        .movie-back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 12px 20px 14px;
+            cursor: pointer;
+        }
+
+        .movie-back-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .movie-player-frame {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border: none;
+            margin-bottom: 16px;
+        }
+
+        .movie-player-info {
+            padding: 0 20px;
+            margin-bottom: 18px;
+        }
+
+        .movie-player-info h2 {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .movie-player-meta {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 12px;
+        }
+
+        .movie-player-desc {
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .movie-sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 20px;
+            margin-bottom: 26px;
+        }
+
+        .source-pill {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.8);
+            border-radius: 14px;
+            padding: 7px 14px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .source-pill.active {
+            background: linear-gradient(135deg, #00f2ea, #ff0050);
+            color: #000;
+            border-color: transparent;
+        }
+
+        .movie-recommend-title {
+            font-size: 16px;
+            font-weight: 800;
+            padding: 0 20px;
+            margin-bottom: 12px;
+        }
+
+        .movie-recommend-row {
+            display: flex;
+            gap: 14px;
+            overflow-x: auto;
+            padding: 0 20px;
+            scrollbar-width: none;
+        }
+
+        .movie-recommend-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .movie-recommend-row .movie-card {
+            flex-shrink: 0;
+            width: 120px;
         }
 
         .profile-actions {
@@ -713,6 +931,12 @@
                 <circle cx="17" cy="16" r="3"/>
             </svg>
         </button>
+        <button class="nav-btn" id="nav-movies" onclick="switchTab('movies')" title="Movies" aria-label="Movies">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="2"/>
+                <path d="M7 4v16M17 4v16M3 9h4M17 9h4M3 15h4M17 15h4"/>
+            </svg>
+        </button>
         <button class="nav-btn" id="nav-profile" onclick="switchTab('profile')" title="Profile" aria-label="Profile">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="8" r="4"/>
@@ -782,6 +1006,37 @@
         <div class="following-list" id="following-list"></div>
     </div>
 
+    <div class="side-view" id="movies-view">
+        <div class="movies-title">Stream movies from Kurdistan</div>
+        <div class="movie-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7"/>
+                <path d="M21 21l-4.3-4.3"/>
+            </svg>
+            <input type="text" id="movie-search-input" placeholder="Search movies..." oninput="renderMovieGrid()" />
+        </div>
+        <div class="movie-categories" id="movie-categories"></div>
+        <div class="movie-grid" id="movie-grid"></div>
+    </div>
+
+    <div class="side-view" id="movie-player-view">
+        <button class="movie-back-btn" onclick="closeMoviePlayer(event)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+            Movies
+        </button>
+        <iframe class="movie-player-frame" id="movie-player-frame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <div class="movie-player-info">
+            <h2 id="movie-player-title"></h2>
+            <div class="movie-player-meta" id="movie-player-meta"></div>
+            <div class="movie-player-desc" id="movie-player-desc"></div>
+        </div>
+        <div class="movie-sources" id="movie-sources"></div>
+        <div class="movie-recommend-title">You may also like</div>
+        <div class="movie-recommend-row" id="movie-recommend-row"></div>
+    </div>
+
     <div class="install-modal" id="about-modal">
         <div class="install-modal-content">
             <h3>About ZindîTok</h3>
@@ -811,42 +1066,73 @@
         // e.g. embed pages like ok.ru/videoembed/... . Everything without a `type`
         // is treated as a normal HLS video.
         const uniqueChannels = [
-            { id: 0, name: "Med Muzîk", category: "Kurdistan Music", url: "https://m3u8-proxy.koerdnederland.workers.dev/live3.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=medmuzik.tv", website: "http://medmuzik.tv/" },
+            { id: 0, name: "Med Muzîk", category: "Music", url: "https://m3u8-proxy.koerdnederland.workers.dev/live3.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=medmuzik.tv", website: "http://medmuzik.tv/" },
             { id: 1, name: "StêrkTV", category: "Kurdistan News", url: "https://zindi.sterk.tv/live/sterk.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=sterk.tv", website: "https://sterk.tv" },
-            { id: 2, name: "JinTV", category: "By Women for Women, Kurdish Women-focused Channel", url: "https://live.jintv.org/medialive/jintv.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=jintv.net", website: "https://jintv.net/" },
+            { id: 2, name: "JinTV", category: "By Women for Women, Women-focused Channel", url: "https://live.jintv.org/medialive/jintv.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=jintv.net", website: "https://jintv.net/" },
             { id: 3, name: "RonahiTV", category: "Rojava News & Culture", url: "https://hlspackager.akamaized.net/live/DB/RONAHI_TV/HLS/RONAHI_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=ronahi.tv", website: "https://ronahi.tv" },
             { id: 4, name: "Nûçe TV", category: "Kurdistan News & Culture", url: "https://hlspackager.akamaized.net/live/DB/NU_TV/HLS/NU_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=nucetv.net", website: "https://nucetv.net/" },
             { id: 5, name: "Zagros24", category: "Rojhilat & Iran News", url: "https://hlspackager.akamaized.net/live/DB/ZAGROS_24/HLS/ZAGROS_24.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=zagros24.net", website: "https://zagros24.net/" },
-            { id: 6, name: "Rojava TV", category: "Rojava News & Culture", url: "https://hlspackager.akamaized.net/live/DB/ROJAVA_HD/HLS/ROJAVA_HD.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=rojavatv.net", website: "https://rojavatv.net" },
-            { id: 7, name: "Rojhelat TV", category: "Rojhilat News & Culture", url: "https://hlspackager.akamaized.net/live/DB/ROJHELAT/HLS/ROJHELAT-avc1_2500000=10002,mp4a_128000=20000.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=rojhelat.media", website: "https://www.rojhelat.media/" },
-            { id: 8, name: "ÇiraTV", category: "Ezidi News & Culture", type: "iframe", url: "https://ok.ru/videoembed/10267254464101?autoplay=1", logo: "https://yt3.googleusercontent.com/oClAXiwBo_m56FOVdQW9gpX8Ei6XiBkLdxkNB-EGpWQbZ7yXHaJt4CQ09pS5nuJeoxm0NVyVrw=s160-c-k-c0x00ffffff-no-rj", website: "https://ciratv.com/" },
-            { id: 9, name: "Medya Haber", category: "Kurdish Media in Turkish", type: "iframe", url: "https://www.youtube.com/embed/otBzstJGtw4?autoplay=1&mute=0&rel=0&playsinline=1&enablejsapi=1", logo: "https://www.google.com/s2/favicons?sz=128&domain=medyahabertv.digital", website: "https://www.medyahabertv.digital/" },
-            { id: 10, name: "İlke TV", category: "Bakur & Turkey News", url: "https://stream.ilketv.com.tr/hls/ilkecanli.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=ilketv.com.tr", website: "https://ilketv.com.tr/" },
-            { id: 11, name: "Alyaum TV", category: "Rojava & Syria News", url: "https://hlspackager.akamaized.net/live/DB/ALYAUM_TV/HLS/ALYAUM_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=alyaumtv.net", website: "https://alyaumtv.net/" },
-            { id: 12, name: "ZarokTV", category: "Children's Channel", url: "https://zindikurmanci.zaroktv.com.tr/hls/0/stream.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=zaroktv.com.tr", website: "https://zaroktv.com.tr/" },
+            { id: 6, name: "Rojava", category: "Rojava News & Culture", url: "https://hlspackager.akamaized.net/live/DB/ROJAVA_HD/HLS/ROJAVA_HD.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=rojavatv.net", website: "https://rojavatv.net" },
+            { id: 7, name: "ÇiraTV", category: "Ezidi News & Culture", type: "iframe", url: "https://ok.ru/videoembed/10267254464101?autoplay=1", logo: "https://yt3.googleusercontent.com/oClAXiwBo_m56FOVdQW9gpX8Ei6XiBkLdxkNB-EGpWQbZ7yXHaJt4CQ09pS5nuJeoxm0NVyVrw=s160-c-k-c0x00ffffff-no-rj", website: "https://ciratv.com/" },
+            { id: 8, name: "Medya Haber", category: "Kurdish Media in Turkish", type: "iframe", url: "https://www.youtube.com/embed/og3XyMupw_Q?autoplay=1&mute=0&rel=0&playsinline=1&enablejsapi=1", logo: "https://www.google.com/s2/favicons?sz=128&domain=medyahabertv.digital", website: "https://www.medyahabertv.digital/" },
+            { id: 9, name: "İlke TV", category: "Bakur & Turkey News", url: "https://stream.ilketv.com.tr/hls/ilkecanli.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=ilketv.com.tr", website: "https://ilketv.com.tr/" },
+            { id: 10, name: "Alyaum TV", category: "Rojava & Syria News", url: "https://hlspackager.akamaized.net/live/DB/ALYAUM_TV/HLS/ALYAUM_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=alyaumtv.net", website: "https://alyaumtv.net/" },
+            { id: 11, name: "ZarokTV", category: "Children's Channel", url: "https://zindikurmanci.zaroktv.com.tr/hls/0/stream.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=zaroktv.com.tr", website: "https://zaroktv.com.tr/" },
         ];
 
         // Radio stations. Independent list from the TV channels above - the
         // Radio tab plays through a single shared <audio> element with its
         // own prev/next/play controls.
         const radioChannels = [
-            { id: 0, name: "Dirbêsiyê FM", category: "Radio based in Dirbêsiyê |Rojava", url: "https://dirbesiyefm-rojavaradio.radioca.st/stream?type=http&nocache=4", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/330969500_1538545249968472_1587887689662368328_n.jpg?stp=dst-jpg_tt6&cstp=mx1922x1922&ctp=s1922x1922&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=abznYcke3CUQ7kNvwExU7SG&_nc_oc=AdpwqdS_1Tb5v7thoQhuVqnEWkO_B-kOotTxoCRB7_0OWHrinoCSSCiD_smakU6diP06T2SZQ0ChgAkOy3FHrviY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=EarBDfzdvXuSBAgSFpFkbg&_nc_ss=7b289&oh=00_AQJswbVl86qMKC2k3TZZY-xAMl4nft6-jYWm4giElHRXrQ&oe=6AB1947D", website: "https://dirbesiye.fm/" },
-            { id: 1, name: "Firat FM", category: "Kurdish Voices and Music", url: "https://yayin.firatfm.com/firatfm/stream", logo: "https://www.firatfm.com/wp-content/uploads/2025/12/logo.png", website: "https://www.firatfm.com/" },
-            { id: 2, name: "Mezopotamya Radyo", category: "Radio based in Mêrdîn", url: "https://anadolu.liderhost.com.tr/9404/stream", logo: "https://pbs.twimg.com/profile_images/1477329430531948548/_slIP1P4.jpg", website: "https://www.artuklumezopotamyaradyo.com/" },
-            { id: 3, name: "Radyo Denge Kurdi", category: "Kurdish Music Radio", url: "https://yayin.radyodengekurdi.com/kurdi/stream", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/605456025_1503716084949068_6129005268807761183_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hO8HlDj_hqcQ7kNvwFlIONz&_nc_oc=AdrUHVA-iP9njG-bdGtJPdrqBrtffw9r5PmAPI2kZz6EOoXzZixQcbK0H7Bh_9q_UMU49Nvc67tkUIhKr04zhgl2&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=bb67XeeyEflxXsaG8CbJRQ&_nc_ss=7b289&oh=00_AQI168vYUgVvec0ZMmt-wTSYKTqyPWeGSJgNiOc8sKieOQ&oe=6AB38B94", website: "https://www.radyodengekurdi.com/" },
-            { id: 4, name: "Radyo Dersim", category: "Zazaki Music Radio (Might not work on Iphone)", url: "https://azurastream.radyodersim.org/radio.mp3", logo: "https://www.radyodersim.org/img/ogimage.jpg", website: "https://www.radyodersim.org/" },
-            { id: 5, name: "Radyo Munzur", category: "Radio based in Dêrsim", url: "https://radyo.yayindakiler.com:3002/stream", logo: "https://play-lh.googleusercontent.com/_ndwrLbfUIlbIOKmJru-4Tx6TlP8-1XZzRUsOs8hMim3eDueYWt_smavw60cih-XrLrrEAVEn8duW7HapzcrMCw", website: "https://www.radyomunzur.com/" },
-            { id: 6, name: "Zerguwan FM", category: "Radio based in Wan", url: "https://ip.zerguwan.com/8230/stream?nocache=1789669022440", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/728882895_1606374807745272_8312931340329451072_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x1024&ctp=s1024x1024&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=PkRKwn2OYogQ7kNvwHMCPVi&_nc_oc=AdrxW2Iy7XpInLrkI42HxhabinDIqx34Eaz7M7BrsZyfhuOsQia_ODGsvunjTTB_FXvIzMyI2jY0vm1ylcVnzh7Z&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=C6iTEUE3YcBjj7ohGoNaHA&_nc_ss=7b289&oh=00_AQKKRpYvcUeEmEVyoKAHJW1dQiXnP1-c1FvIxSf_x3bNIQ&oe=6AB21FDC", website: "https://zerguwanfm.com.tr/" },
-            { id: 7, name: "Hazar FM", category: "Radio based in Sêrt (Might not work on Iphone)", url: "https://yayin.hazarfm.com/0056/stream.mp3", logo: "https://images.keepone.net/2791-2021-01-08.png", website: "https://hazarfm.com/" },
-            { id: 8, name: "Bitlis FM", category: "Radio based in Bidlîs", url: "https://ssl22.radyotelekom.com/8172/bitlisfm", logo: "https://www.bitlisfm.com.tr/wp-content/uploads/2026/09/bitlisfm-logo.png", website: "https://www.bitlisfm.com.tr/" },
-            { id: 9, name: "Radyo Azelya", category: "Radio based in Çewlîg", url: "https://stream.turkiyeradyolari.com/8010/stream", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/470606050_1016531557158097_8842674681847456618_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1463&ctp=s2048x1463&_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ZnqPG9bjShAQ7kNvwGlZZk-&_nc_oc=AdrI8ZfFtepQE1ffJfGnaqpVy1HkhmoY5ht3VclB3xzhVkAD7NQUH7eLU8-zgXvDkmSLhzzf12u5oQ6-jlWzvfZ1&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=NEiRJlMhKbD00tKBk5gwfA&_nc_ss=7b289&oh=00_AQI2JIzUw-LjtjcyC6O3oLC17FqCicK5YchlX5mASwBuVw&oe=6AB36B5E", website: "https://www.azelya.com.tr/" },
+            { id: 0, name: "Dirbêsiyê FM", category: "Kurdish Talk & Music Radio", url: "https://dirbesiyefm-rojavaradio.radioca.st/stream?type=http&nocache=4", logo: "https://www.google.com/s2/favicons?sz=128&domain=dirbesiye.fm", website: "https://dirbesiye.fm/" },
+        ];
+
+        // Movie categories are the four historic regions of Greater
+        // Kurdistan (Bakur/North, Bashur/South, Rojava/West, Rojhilat/East)
+        // plus Kurdistana Sor (Red Kurdistan). Each movie is filed under
+        // whichever region it's set in or most closely tied to.
+        const movieCategories = ["Bakur", "Bashur", "Rojava", "Rojhilat", "Kurdistana Sor"];
+
+        const movies = [
+            {
+                id: 1,
+                title: "Bekas",
+                year: 2012,
+                poster: "https://m.media-amazon.com/images/M/MV5BMTM2NTQzNDI4Ml5BMl5BanBnXkFtZTcwOTU1NDExOQ@@._V1_.jpg",
+                duration: "97 min",
+                language: "Kurdish",
+                category: "Bashur",
+                type: "Movie",
+                description: "In 1990s Iraqi Kurdistan, two orphaned shoeshine brothers catch a glimpse of Superman at the local cinema and set off on an unlikely journey to America, convinced he can save them from their hardship.",
+                sources: [
+                    { label: "Kurdish (Original)", embed: "https://ok.ru/videoembed/9955534637795" },
+                    { label: "Turkish Dub", embed: "https://ok.ru/videoembed/9245833562625" },
+                    { label: "German Dub", embed: "https://ok.ru/videoembed/5002495265446" },
+                    { label: "English Subtitles", embed: "https://www.youtube.com/embed/gptVJqCyRXE?cc_load_policy=1&cc_lang_pref=en" },
+                    { label: "German Subtitles", embed: "https://www.youtube.com/embed/nAbiylNCp30?cc_load_policy=1&cc_lang_pref=de" },
+                ]
+            },
+            {
+                id: 2,
+                title: "Uçurtma",
+                year: 2015,
+                poster: "https://m.media-amazon.com/images/M/MV5BNzJhYTc2NjUtYWIyNi00YjQ4LWEwZjQtMGMxNWRiNTkxNjY1XkEyXkFqcGc@._V1_.jpg",
+                duration: "15 min",
+                language: "Turkish",
+                category: "Bakur",
+                type: "Short Film",
+                description: "Two young brothers living by the Syrian border grow up afraid of the warplanes overhead. When they learn what those planes are doing to people on the other side, they hatch a child's plan to stop them using nothing but kites.",
+                sources: [
+                    { label: "Turkish (Original) - English Subtitles", embed: "https://www.youtube.com/embed/EbiRkAbr4jk?cc_load_policy=1&cc_lang_pref=en" },
+                ]
+            },
         ];
 
         // Lower LOOP_MULTIPLIER = fewer DOM nodes rendered up front (faster
         // first load), at the cost of the infinite-scroll illusion wrapping
         // around sooner. 16 still allows ~70 scrolls in either direction
         // before it loops - plenty for a normal session.
-        const LOOP_MULTIPLIER = 5; 
+        const LOOP_MULTIPLIER = 16; 
         const TOTAL_RENDER_COUNT = uniqueChannels.length * LOOP_MULTIPLIER;
 
         // --- Install / Add-to-Home-Screen support ---
@@ -1628,15 +1914,20 @@
         function switchTab(tab) {
             document.getElementById('nav-channels').classList.toggle('active', tab === 'channels');
             document.getElementById('nav-radio').classList.toggle('active', tab === 'radio');
+            document.getElementById('nav-movies').classList.toggle('active', tab === 'movies');
             document.getElementById('nav-profile').classList.toggle('active', tab === 'profile');
 
             const radioView = document.getElementById('radio-view');
             const profileView = document.getElementById('profile-view');
+            const moviesView = document.getElementById('movies-view');
+            const moviePlayerView = document.getElementById('movie-player-view');
 
             if (tab === 'channels') {
                 appContainer.style.display = '';
                 radioView.classList.remove('visible');
                 profileView.classList.remove('visible');
+                moviesView.classList.remove('visible');
+                moviePlayerView.classList.remove('visible');
                 updatePlayers();
             } else {
                 appContainer.style.display = 'none';
@@ -1649,8 +1940,14 @@
                 }
                 radioView.classList.toggle('visible', tab === 'radio');
                 profileView.classList.toggle('visible', tab === 'profile');
+                moviesView.classList.toggle('visible', tab === 'movies');
+                if (tab !== 'movies') moviePlayerView.classList.remove('visible');
                 if (tab === 'radio' && !radioAudio.src) loadRadioChannel(radioIndex, false);
                 if (tab === 'profile') renderFollowingList();
+                if (tab === 'movies') {
+                    renderMovieCategories();
+                    renderMovieGrid();
+                }
             }
         }
 
@@ -1687,6 +1984,104 @@
             currentIndex = middleBlock + pos;
             switchTab('channels');
             document.getElementById(`container-${currentIndex}`).scrollIntoView({ behavior: 'auto' });
+        }
+
+        // --- Movies tab ---
+        let activeMovieCategory = 'All';
+
+        function renderMovieCategories() {
+            const wrap = document.getElementById('movie-categories');
+            const cats = ['All', ...movieCategories];
+            wrap.innerHTML = cats.map(cat =>
+                `<button class="category-pill${cat === activeMovieCategory ? ' active' : ''}" onclick="setMovieCategory('${cat}')">${cat}</button>`
+            ).join('');
+        }
+
+        function setMovieCategory(cat) {
+            activeMovieCategory = cat;
+            renderMovieCategories();
+            renderMovieGrid();
+        }
+
+        function renderMovieGrid() {
+            const grid = document.getElementById('movie-grid');
+            const query = document.getElementById('movie-search-input').value.trim().toLowerCase();
+
+            const filtered = movies.filter(m => {
+                const matchesCategory = activeMovieCategory === 'All' || m.category === activeMovieCategory;
+                const matchesSearch = !query || m.title.toLowerCase().includes(query);
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="movies-empty">No movies found here yet.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(m => movieCardHTML(m)).join('');
+        }
+
+        function movieCardHTML(m) {
+            const metaBits = [m.duration, m.language];
+            if (m.episodes) metaBits.push(m.episodes);
+            return `
+                <div class="movie-card" onclick="openMoviePlayer(${m.id})">
+                    <img src="${m.poster}" alt="${m.title}" loading="lazy" />
+                    <div class="mc-title">${m.title} (${m.year})</div>
+                    <div class="mc-meta">${metaBits.join(' · ')}</div>
+                </div>
+            `;
+        }
+
+        let currentMovieId = null;
+
+        function openMoviePlayer(movieId) {
+            const movie = movies.find(m => m.id === movieId);
+            if (!movie) return;
+            currentMovieId = movieId;
+
+            document.getElementById('movie-player-title').textContent = `${movie.title} (${movie.year})`;
+            const metaBits = [movie.type, movie.duration, movie.language];
+            if (movie.episodes) metaBits.push(movie.episodes);
+            document.getElementById('movie-player-meta').textContent = metaBits.join(' · ');
+            document.getElementById('movie-player-desc').textContent = movie.description;
+
+            renderMovieSources(movie, 0);
+            renderMovieRecommendations(movie);
+
+            document.getElementById('movies-view').classList.remove('visible');
+            document.getElementById('movie-player-view').classList.add('visible');
+            document.getElementById('movie-player-view').scrollTop = 0;
+        }
+
+        function renderMovieSources(movie, activeIndex) {
+            const wrap = document.getElementById('movie-sources');
+            wrap.innerHTML = movie.sources.map((s, i) =>
+                `<button class="source-pill${i === activeIndex ? ' active' : ''}" onclick="selectMovieSource(${i})">${s.label}</button>`
+            ).join('');
+            document.getElementById('movie-player-frame').src = movie.sources[activeIndex].embed;
+        }
+
+        function selectMovieSource(index) {
+            const movie = movies.find(m => m.id === currentMovieId);
+            if (!movie) return;
+            renderMovieSources(movie, index);
+        }
+
+        function renderMovieRecommendations(movie) {
+            const row = document.getElementById('movie-recommend-row');
+            const others = movies.filter(m => m.id !== movie.id);
+            row.innerHTML = others.length
+                ? others.map(m => movieCardHTML(m)).join('')
+                : `<div class="movies-empty">More movies coming soon.</div>`;
+        }
+
+        function closeMoviePlayer(event) {
+            if (event) event.stopPropagation();
+            // Stop playback by clearing the iframe src.
+            document.getElementById('movie-player-frame').src = '';
+            document.getElementById('movie-player-view').classList.remove('visible');
+            document.getElementById('movies-view').classList.add('visible');
         }
 
         initDOM();
