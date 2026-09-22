@@ -18,12 +18,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="ZindîTok - Live Kurdish TV">
     <meta property="og:description" content="Watch live Kurdish TV channels.">
-    <meta property="og:image" content="https://koerddev.github.io/ZindiTok/sharing_image.png">
-    <meta property="og:url" content="REPLACE_WITH_ABSOLUTE_SITE_URL">
+    <meta property="og:image" content="https://zinditok.github.io/sharing_image.png">
+    <meta property="og:url" content="https://zinditok.github.io">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ZindîTok - Live Kurdish TV">
     <meta name="twitter:description" content="Watch live Kurdish TV channels.">
-    <meta name="twitter:image" content="https://koerddev.github.io/ZindiTok/sharing_image.png">
+    <meta name="twitter:image" content="https://zinditok.github.io/sharing_image.png">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3392542722154116"
      crossorigin="anonymous"></script>
@@ -328,6 +328,77 @@
             text-shadow: 0 2px 8px rgba(0,0,0,0.45);
         }
 
+        .radio-secondary-controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .radio-secondary-btn {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(0,0,0,0.25);
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+            padding: 9px 16px;
+            font-size: 12.5px;
+            font-weight: 700;
+            cursor: pointer;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        .radio-secondary-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .radio-secondary-btn.favorited {
+            background: #fff;
+            color: #ff0050;
+        }
+
+        .radio-secondary-btn.favorited svg {
+            fill: #ff0050;
+        }
+
+        .radio-secondary-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .radio-secondary-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,0,0,0.25);
+            border: none;
+            color: #fff;
+            border-radius: 20px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .radio-secondary-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .radio-secondary-btn.icon-only {
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .radio-secondary-btn.icon-only.active {
+            background: #fff;
+            color: #ff0050;
+        }
+
         #radio-view .side-view-placeholder {
             color: #fff;
             text-shadow: 0 2px 8px rgba(0,0,0,0.45);
@@ -468,23 +539,69 @@
 
         .movie-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 14px;
             padding: 0 20px;
+        }
+
+        /* Full-bleed on phones (matches how the rest of the app already
+           looks there). On wider viewports (laptop, TV, desktop browser),
+           cap the content width and center it - this keeps posters and the
+           player from stretching edge-to-edge, and leaves open space on
+           both sides where ad units (e.g. Google AdSense) can be placed. */
+        @media (min-width: 700px) {
+            .side-view-inner {
+                max-width: 860px;
+                margin: 0 auto;
+            }
+
+            .movie-player-frame {
+                border-radius: 12px;
+            }
         }
 
         .movie-card {
             cursor: pointer;
         }
 
-        .movie-card img {
+        .movie-poster-wrap {
+            position: relative;
+        }
+
+        .movie-poster-wrap img {
             width: 100%;
             aspect-ratio: 2 / 3;
             object-fit: cover;
             border-radius: 10px;
             background: rgba(255,255,255,0.08);
             display: block;
-            margin-bottom: 8px;
+        }
+
+        .poster-save-btn {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(4px);
+            border: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .poster-save-btn svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        .poster-save-btn.saved {
+            background: linear-gradient(135deg, #00f2ea, #ff0050);
+            color: #000;
         }
 
         .movie-card .mc-title {
@@ -544,9 +661,47 @@
             margin-bottom: 18px;
         }
 
-        .movie-player-info h2 {
-            font-size: 20px;
+        .movie-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
             margin-bottom: 4px;
+        }
+
+        .movie-title-row h2 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .movie-title-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .icon-action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .icon-action-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .icon-action-btn.saved {
+            background: linear-gradient(135deg, #00f2ea, #ff0050);
+            color: #000;
         }
 
         .movie-player-meta {
@@ -631,6 +786,7 @@
             font-weight: 700;
             cursor: pointer;
             text-align: left;
+            text-decoration: none;
             transition: background 0.15s;
         }
 
@@ -661,6 +817,49 @@
         .profile-action-btn.about .pab-icon {
             background: rgba(255,255,255,0.12);
             color: #fff;
+        }
+
+        .profile-footer-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .profile-footer-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.06);
+            border: none;
+            border-radius: 12px;
+            padding: 14px 8px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .profile-footer-btn:active {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .profile-footer-btn .pfb-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-footer-btn .pfb-icon svg {
+            width: 18px;
+            height: 18px;
         }
 
 
@@ -969,6 +1168,21 @@
                 </button>
             </div>
             <div class="radio-status" id="radio-status">Tap play to listen</div>
+
+            <div class="radio-secondary-controls">
+                <button class="radio-secondary-btn" id="radio-favorite-btn" onclick="toggleFavoriteRadio(event)" aria-label="Favorite this station">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="radio-favorite-icon">
+                        <path d="M12 21s-7-4.35-9.5-8.5C.8 9 2 5.5 5.5 4.7c2-.45 3.7.4 4.5 2 .8-1.6 2.5-2.45 4.5-2C17.99 5.5 19.2 9 16.5 12.5 14 16.65 12 21 12 21z"/>
+                    </svg>
+                    <span>Favorite</span>
+                </button>
+                <button class="radio-secondary-btn" onclick="shareRadio(event)" aria-label="Listen with friends">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.16 11.23l-7.5-6a1.5 1.5 0 00-2.43 1.17v3c-4.48.33-8.23 4.14-8.23 9.6 0 1.25.32 2.45.86 3.5a.5.5 0 00.86-.45c-.86-3.8.46-6.66 3.32-8.08 1.48-.74 3.03-1 4.54-1.11v3.42a1.5 1.5 0 002.43 1.17l7.5-6a1.5 1.5 0 000-2.34z"/>
+                    </svg>
+                    <span>Listen with Friends</span>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -979,17 +1193,42 @@
             <h2>Profile</h2>
         </div>
 
-        <div class="profile-actions">
-            <button class="profile-action-btn download" onclick="handleInstallClick(event)">
-                <span class="pab-icon">
+        <div class="side-view-header">
+            <h2>Following</h2>
+        </div>
+        <div class="following-list" id="following-list"></div>
+
+        <div class="side-view-header">
+            <h2>Saved Movies</h2>
+        </div>
+        <div class="following-list" id="saved-movies-list"></div>
+
+        <div class="side-view-header">
+            <h2>Favorite Radios</h2>
+        </div>
+        <div class="following-list" id="favorite-radios-list"></div>
+
+        <div class="profile-footer-actions">
+            <button class="profile-footer-btn" onclick="handleInstallClick(event)">
+                <span class="pfb-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/>
                     </svg>
                 </span>
-                <span>Download App</span>
+                <span>Download</span>
             </button>
-            <button class="profile-action-btn about" onclick="showAboutModal(event)">
-                <span class="pab-icon">
+            <button class="profile-footer-btn" onclick="window.open('https://www.instagram.com/zinditok', '_blank')">
+                <span class="pfb-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+                <span>Instagram</span>
+            </button>
+            <button class="profile-footer-btn" onclick="showAboutModal(event)">
+                <span class="pfb-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="9"/>
                         <path d="M12 11v5"/>
@@ -999,42 +1238,55 @@
                 <span>About</span>
             </button>
         </div>
-
-        <div class="side-view-header">
-            <h2>Following</h2>
-        </div>
-        <div class="following-list" id="following-list"></div>
     </div>
 
     <div class="side-view" id="movies-view">
-        <div class="movies-title">Stream movies from Kurdistan</div>
-        <div class="movie-search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="7"/>
-                <path d="M21 21l-4.3-4.3"/>
-            </svg>
-            <input type="text" id="movie-search-input" placeholder="Search movies..." oninput="renderMovieGrid()" />
+        <div class="side-view-inner">
+            <div class="movies-title">Stream movies from Kurdistan</div>
+            <div class="movie-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="7"/>
+                    <path d="M21 21l-4.3-4.3"/>
+                </svg>
+                <input type="text" id="movie-search-input" placeholder="Search movies..." oninput="renderMovieGrid()" />
+            </div>
+            <div class="movie-categories" id="movie-categories"></div>
+            <div class="movie-grid" id="movie-grid"></div>
         </div>
-        <div class="movie-categories" id="movie-categories"></div>
-        <div class="movie-grid" id="movie-grid"></div>
     </div>
 
     <div class="side-view" id="movie-player-view">
-        <button class="movie-back-btn" onclick="closeMoviePlayer(event)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 18l-6-6 6-6"/>
-            </svg>
-            Movies
-        </button>
-        <iframe class="movie-player-frame" id="movie-player-frame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        <div class="movie-player-info">
-            <h2 id="movie-player-title"></h2>
-            <div class="movie-player-meta" id="movie-player-meta"></div>
-            <div class="movie-player-desc" id="movie-player-desc"></div>
+        <div class="side-view-inner">
+            <button class="movie-back-btn" onclick="closeMoviePlayer(event)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+                Movies
+            </button>
+            <iframe class="movie-player-frame" id="movie-player-frame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <div class="movie-player-info">
+                <div class="movie-title-row">
+                    <h2 id="movie-player-title"></h2>
+                    <div class="movie-title-actions">
+                        <button class="icon-action-btn" onclick="shareMovie(event)" aria-label="Share this movie">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.16 11.23l-7.5-6a1.5 1.5 0 00-2.43 1.17v3c-4.48.33-8.23 4.14-8.23 9.6 0 1.25.32 2.45.86 3.5a.5.5 0 00.86-.45c-.86-3.8.46-6.66 3.32-8.08 1.48-.74 3.03-1 4.54-1.11v3.42a1.5 1.5 0 002.43 1.17l7.5-6a1.5 1.5 0 000-2.34z"/>
+                            </svg>
+                        </button>
+                        <button class="icon-action-btn" id="movie-player-save-btn" onclick="toggleSaveMovie(event)" aria-label="Save movie">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="movie-player-save-icon">
+                                <path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="movie-player-meta" id="movie-player-meta"></div>
+                <div class="movie-player-desc" id="movie-player-desc"></div>
+            </div>
+            <div class="movie-sources" id="movie-sources"></div>
+            <div class="movie-recommend-title">You may also like</div>
+            <div class="movie-recommend-row" id="movie-recommend-row"></div>
         </div>
-        <div class="movie-sources" id="movie-sources"></div>
-        <div class="movie-recommend-title">You may also like</div>
-        <div class="movie-recommend-row" id="movie-recommend-row"></div>
     </div>
 
     <div class="install-modal" id="about-modal">
@@ -1086,7 +1338,7 @@
         // own prev/next/play controls.
         const radioChannels = [
             { id: 0, name: "Dirbêsiyê FM", category: "Radio based in Dirbêsiyê |Rojava", url: "https://dirbesiyefm-rojavaradio.radioca.st/stream?type=http&nocache=4", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/330969500_1538545249968472_1587887689662368328_n.jpg?stp=dst-jpg_tt6&cstp=mx1922x1922&ctp=s1922x1922&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=abznYcke3CUQ7kNvwExU7SG&_nc_oc=AdpwqdS_1Tb5v7thoQhuVqnEWkO_B-kOotTxoCRB7_0OWHrinoCSSCiD_smakU6diP06T2SZQ0ChgAkOy3FHrviY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=EarBDfzdvXuSBAgSFpFkbg&_nc_ss=7b289&oh=00_AQJswbVl86qMKC2k3TZZY-xAMl4nft6-jYWm4giElHRXrQ&oe=6AB1947D", website: "https://dirbesiye.fm/" },
-            { id: 1, name: "Firat FM", category: "Kurdish Voices and Music", url: "https://yayin.firatfm.com/firatfm/stream", logo: "https://www.firatfm.com/wp-content/uploads/2025/12/logo.png", website: "https://www.firatfm.com/" },
+            { id: 1, name: "Firat FM", category: "Kurdish Voices and Music", url: "https://yayin.firatfm.com/firatfm/stream", logo: "https://www.firatfm.com/assets/img/logo.webp", website: "https://www.firatfm.com/" },
             { id: 2, name: "Mezopotamya Radyo", category: "Radio based in Mêrdîn", url: "https://anadolu.liderhost.com.tr/9404/stream", logo: "https://pbs.twimg.com/profile_images/1477329430531948548/_slIP1P4.jpg", website: "https://www.artuklumezopotamyaradyo.com/" },
             { id: 3, name: "Radyo Denge Kurdi", category: "Kurdish Music Radio", url: "https://yayin.radyodengekurdi.com/kurdi/stream", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/605456025_1503716084949068_6129005268807761183_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hO8HlDj_hqcQ7kNvwFlIONz&_nc_oc=AdrUHVA-iP9njG-bdGtJPdrqBrtffw9r5PmAPI2kZz6EOoXzZixQcbK0H7Bh_9q_UMU49Nvc67tkUIhKr04zhgl2&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=bb67XeeyEflxXsaG8CbJRQ&_nc_ss=7b289&oh=00_AQI168vYUgVvec0ZMmt-wTSYKTqyPWeGSJgNiOc8sKieOQ&oe=6AB38B94", website: "https://www.radyodengekurdi.com/" },
             { id: 4, name: "Radyo Dersim", category: "Zazaki Music Radio (Might not work on Iphone)", url: "https://azurastream.radyodersim.org/radio.mp3", logo: "https://www.radyodersim.org/img/ogimage.jpg", website: "https://www.radyodersim.org/" },
@@ -1110,7 +1362,7 @@
                 year: 2012,
                 poster: "https://m.media-amazon.com/images/M/MV5BMTM2NTQzNDI4Ml5BMl5BanBnXkFtZTcwOTU1NDExOQ@@._V1_.jpg",
                 duration: "97 min",
-                language: "Sorani Kurdish",
+                language: "Kurdish",
                 category: "Bashur",
                 type: "Movie",
                 description: "In 1990s Iraqi Kurdistan, two orphaned shoeshine brothers catch a glimpse of Superman at the local cinema and set off on an unlikely journey to America, convinced he can save them from their hardship.",
@@ -1118,7 +1370,7 @@
                     { label: "Kurdish (Original)", embed: "https://ok.ru/videoembed/9955534637795" },
                     { label: "Turkish Dub", embed: "https://ok.ru/videoembed/9245833562625" },
                     { label: "German Dub", embed: "https://ok.ru/videoembed/5002495265446" },
-                    { label: "English Subtitles", embed: "https://www.youtube.com/embed/nAbiylNCp30?cc_load_policy=1&cc_lang_pref=en" },
+                    { label: "English Subtitles", embed: "https://www.youtube.com/embed/gptVJqCyRXE?cc_load_policy=1&cc_lang_pref=en" },
                     { label: "German Subtitles", embed: "https://www.youtube.com/embed/nAbiylNCp30?cc_load_policy=1&cc_lang_pref=de" },
                 ]
             },
@@ -1133,23 +1385,38 @@
                 type: "Short Film",
                 description: "Two young brothers living by the Syrian border grow up afraid of the warplanes overhead. When they learn what those planes are doing to people on the other side, they hatch a child's plan to stop them using nothing but kites.",
                 sources: [
-                    { label: "Turkish (Original) - English Subtitles", embed: "https://www.youtube.com/embed/EbiRkAbr4jk?cc_load_policy=1" },
+                    { label: "Turkish (Original) - English Subtitles", embed: "https://www.youtube.com/embed/EbiRkAbr4jk" },
                 ]
             },
             {
                 id: 3,
+                title: "Azad",
+                year: 2015,
+                poster: "https://m.media-amazon.com/images/M/MV5BNDQ5ZDNlOTQtMTdhMC00ZGI2LTg4M2YtZmJkNTJiNWZmZDRjXkEyXkFqcGc@._V1_.jpg",
+                duration: "16 min",
+                language: "Kurmanci Kurdish",
+                category: "Bakur",
+                type: "Short Film",
+                description: "Azad was forced to immigrate to Istanbul with his mother. Because his mother goes to work every day, she locks the door after leaving. Azad finds a way to keep his mind occupied.",
+                sources: [
+                    { label: "Kurdish (Original) - English, Turkish Subtitles", embed: "https://www.youtube.com/embed/sJ88qm8SaJ4" },
+                ]
+            },
+            {
+                id: 4,
                 title: "Son Muhteşem Olacak",
-                year: 2016,
+                year: ,
                 poster: "https://pbs.twimg.com/media/D__NyHcX4AASj1p?format=webp&name=medium",
                 duration: "3 Episodes",
                 language: "Turkish",
                 category: "Bakur",
                 type: "Series",
+                episodes: "3 Episodes",
                 description: "",
                 sources: [
-                    { label: "Devrime Cesaret Etmek [Bölüm 1]", embed: "https://ok.ru/videoembed/1860378954469" },
-                    { label: "Savaş Vakti Yaklaştı [Bölüm 2]", embed: "https://ok.ru/videoembed/1860475488997" },
-                    { label: "Mutlaka Kazanacağız [Bölüm 3]", embed: "https://ok.ru/videoembed/1860521888485" },
+                    { label: "EP 1: Devrime Cesaret Etmek", embed: "https://ok.ru/videoembed/1860378954469" },
+                    { label: "EP 2: Savaş Vakti Yaklaştı", embed: "https://ok.ru/videoembed/1860475488997" },
+                    { label: "EP 3: Mutlaka Kazanacağız", embed: "https://ok.ru/videoembed/1860521888485" },
                 ]
             },
         ];
@@ -1349,6 +1616,30 @@
 
         function saveFollowedChannels() {
             localStorage.setItem('zinditok_followed', JSON.stringify([...followedChannels]));
+        }
+
+        // Saved movies and favorite radios follow the exact same
+        // persisted-Set pattern as followed channels above.
+        let savedMovies = new Set();
+        try {
+            savedMovies = new Set(JSON.parse(localStorage.getItem('zinditok_saved_movies') || '[]'));
+        } catch (e) {
+            savedMovies = new Set();
+        }
+
+        function saveSavedMovies() {
+            localStorage.setItem('zinditok_saved_movies', JSON.stringify([...savedMovies]));
+        }
+
+        let favoritedRadios = new Set();
+        try {
+            favoritedRadios = new Set(JSON.parse(localStorage.getItem('zinditok_favorite_radios') || '[]'));
+        } catch (e) {
+            favoritedRadios = new Set();
+        }
+
+        function saveFavoritedRadios() {
+            localStorage.setItem('zinditok_favorite_radios', JSON.stringify([...favoritedRadios]));
         }
 
         const appContainer = document.getElementById('app');
@@ -1766,6 +2057,176 @@
             if (profileView.classList.contains('visible')) renderFollowingList();
         }
 
+        // Save/unsave a movie, syncing every instance of its save button
+        // across the grid, the recommend row, and the player page. When
+        // called with no id, it defaults to whichever movie is currently
+        // open in the player.
+        function toggleSaveMovie(event, movieId) {
+            if (event) event.stopPropagation();
+            const id = movieId !== undefined ? movieId : currentMovieId;
+            if (id === null || id === undefined) return;
+
+            const wasSaved = savedMovies.has(id);
+            if (wasSaved) {
+                savedMovies.delete(id);
+            } else {
+                savedMovies.add(id);
+            }
+            saveSavedMovies();
+
+            const nowSaved = !wasSaved;
+            document.querySelectorAll(`.poster-save-btn[data-movie-id="${id}"]`).forEach(btn => {
+                btn.classList.toggle('saved', nowSaved);
+                btn.querySelector('svg').setAttribute('fill', nowSaved ? 'currentColor' : 'none');
+            });
+
+            if (id === currentMovieId) {
+                const playerBtn = document.getElementById('movie-player-save-btn');
+                if (playerBtn) {
+                    playerBtn.classList.toggle('saved', nowSaved);
+                    document.getElementById('movie-player-save-icon').setAttribute('fill', nowSaved ? 'currentColor' : 'none');
+                }
+            }
+
+            if (document.getElementById('profile-view').classList.contains('visible')) renderSavedMoviesList();
+        }
+
+        // Shares a direct link to the movie. Where the device's native share
+        // sheet supports attaching files (most mobile browsers), this also
+        // attaches the poster image itself - the closest a single static
+        // page can get to "the shared link's image is the movie poster",
+        // since a true link-preview thumbnail needs a server generating
+        // different tags per URL, which this site doesn't have.
+        async function shareMovie(event, movieId) {
+            if (event) event.stopPropagation();
+            const id = movieId !== undefined ? movieId : currentMovieId;
+            const movie = movies.find(m => m.id === id);
+            if (!movie) return;
+
+            const shareUrl = `${window.location.href.split('?')[0]}?movie=${movie.id}`;
+            const shareData = {
+                title: `Watch ${movie.title} on ZindîTok`,
+                text: `Check out ${movie.title} (${movie.year}) on ZindîTok!`,
+                url: shareUrl
+            };
+
+            try {
+                const response = await fetch(movie.poster);
+                const blob = await response.blob();
+                const file = new File([blob], 'poster.jpg', { type: blob.type || 'image/jpeg' });
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ ...shareData, files: [file] });
+                    return;
+                }
+            } catch (err) {
+                console.log('Image share fallback:', err);
+            }
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(err => console.log('Share error:', err));
+            } else {
+                navigator.clipboard.writeText(`${shareData.title} - ${shareData.url}`).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        }
+
+        function renderSavedMoviesList() {
+            const list = document.getElementById('saved-movies-list');
+            const ids = [...savedMovies];
+
+            if (ids.length === 0) {
+                list.innerHTML = `<div class="following-empty">You haven't saved any movies yet.</div>`;
+                return;
+            }
+
+            list.innerHTML = ids.map(id => {
+                const movie = movies.find(m => m.id === id);
+                if (!movie) return '';
+                return `
+                    <div class="following-item" onclick="switchTab('movies'); openMoviePlayer(${movie.id})">
+                        <img src="${movie.poster}" alt="${movie.title}" />
+                        <div>
+                            <div class="fi-name">${movie.title} (${movie.year})</div>
+                            <div class="fi-category">${movie.type}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Radio: sharing a live station's link naturally results in
+        // "listening together" since it's a live broadcast - whoever opens
+        // the link and hits play hears the same thing at the same time.
+        async function shareRadio(event) {
+            if (event) event.stopPropagation();
+            const station = radioChannels[radioIndex];
+            if (!station) return;
+
+            const shareUrl = `${window.location.href.split('?')[0]}?radio=${station.id}`;
+            const shareData = {
+                title: `Listen to ${station.name} with me on ZindîTok`,
+                text: `Tune in to ${station.name} together on ZindîTok!`,
+                url: shareUrl
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(err => console.log('Share error:', err));
+            } else {
+                navigator.clipboard.writeText(`${shareData.title} - ${shareData.url}`).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            }
+        }
+
+        function toggleFavoriteRadio(event, radioId) {
+            if (event) event.stopPropagation();
+            const id = radioId !== undefined ? radioId : radioChannels[radioIndex].id;
+
+            const wasFavorited = favoritedRadios.has(id);
+            if (wasFavorited) {
+                favoritedRadios.delete(id);
+            } else {
+                favoritedRadios.add(id);
+            }
+            saveFavoritedRadios();
+            updateRadioFavoriteButton();
+
+            if (document.getElementById('profile-view').classList.contains('visible')) renderFavoriteRadiosList();
+        }
+
+        function updateRadioFavoriteButton() {
+            const btn = document.getElementById('radio-favorite-btn');
+            if (!btn) return;
+            const station = radioChannels[radioIndex];
+            const isFavorited = station && favoritedRadios.has(station.id);
+            btn.classList.toggle('favorited', !!isFavorited);
+        }
+
+        function renderFavoriteRadiosList() {
+            const list = document.getElementById('favorite-radios-list');
+            const ids = [...favoritedRadios];
+
+            if (ids.length === 0) {
+                list.innerHTML = `<div class="following-empty">You haven't favorited any radios yet.</div>`;
+                return;
+            }
+
+            list.innerHTML = ids.map(id => {
+                const station = radioChannels.find(r => r.id === id);
+                if (!station) return '';
+                return `
+                    <div class="following-item" onclick="switchTab('radio'); playRadioById(${station.id}, true)">
+                        <img src="${station.logo}" alt="${station.name}" />
+                        <div>
+                            <div class="fi-name">${station.name}</div>
+                            <div class="fi-category">${station.category}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
         function toggleMute(event) {
             if (event) event.stopPropagation();
             isMuted = !isMuted;
@@ -1876,6 +2337,18 @@
             if (autoplay) {
                 radioAudio.play().catch(err => console.log("Radio autoplay blocked:", err));
             }
+
+            updateRadioFavoriteButton();
+        }
+
+        // Loads a station by its stable id rather than its current array
+        // position - used by deep links (?radio=) and the Profile tab's
+        // favorites list, since an id and its array index aren't guaranteed
+        // to match once more stations are added.
+        function playRadioById(id, autoplay) {
+            const idx = radioChannels.findIndex(r => r.id === id);
+            if (idx === -1) return;
+            loadRadioChannel(idx, autoplay);
         }
 
         function updateRadioPlayIcon() {
@@ -1957,19 +2430,25 @@
                 updatePlayers();
             } else {
                 appContainer.style.display = 'none';
-                const video = document.getElementById(`video-${currentIndex}`);
+                // Fully release every currently-loaded TV stream (not just
+                // pause the one on screen) - any preloaded neighboring
+                // channels still have active hls.js instances buffering in
+                // the background otherwise, which keeps using data/battery
+                // even while paused. updatePlayers() reloads everything
+                // fresh when coming back to the Channels tab.
+                [...hlsInstances.keys()].forEach(i => unloadVideo(i));
                 const channel = uniqueChannels[currentIndex % uniqueChannels.length];
-                if (channel.type === 'iframe') {
-                    unloadVideo(currentIndex);
-                } else if (video) {
-                    video.pause();
-                }
+                if (channel.type === 'iframe') unloadVideo(currentIndex);
                 radioView.classList.toggle('visible', tab === 'radio');
                 profileView.classList.toggle('visible', tab === 'profile');
                 moviesView.classList.toggle('visible', tab === 'movies');
                 if (tab !== 'movies') moviePlayerView.classList.remove('visible');
                 if (tab === 'radio' && !radioAudio.src) loadRadioChannel(radioIndex, false);
-                if (tab === 'profile') renderFollowingList();
+                if (tab === 'profile') {
+                    renderFollowingList();
+                    renderSavedMoviesList();
+                    renderFavoriteRadiosList();
+                }
                 if (tab === 'movies') {
                     renderMovieCategories();
                     renderMovieGrid();
@@ -2050,10 +2529,18 @@
         function movieCardHTML(m) {
             const metaBits = [m.duration, m.language];
             if (m.episodes) metaBits.push(m.episodes);
+            const isSaved = savedMovies.has(m.id);
             return `
-                <div class="movie-card" onclick="openMoviePlayer(${m.id})">
-                    <img src="${m.poster}" alt="${m.title}" loading="lazy" />
-                    <div class="mc-title">${m.title} (${m.year})</div>
+                <div class="movie-card">
+                    <div class="movie-poster-wrap" onclick="openMoviePlayer(${m.id})">
+                        <img src="${m.poster}" alt="${m.title}" loading="lazy" />
+                    </div>
+                    <button class="poster-save-btn${isSaved ? ' saved' : ''}" data-movie-id="${m.id}" onclick="toggleSaveMovie(event, ${m.id})" aria-label="Save movie">
+                        <svg viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z"/>
+                        </svg>
+                    </button>
+                    <div class="mc-title" onclick="openMoviePlayer(${m.id})">${m.title} (${m.year})</div>
                     <div class="mc-meta">${metaBits.join(' · ')}</div>
                 </div>
             `;
@@ -2116,6 +2603,24 @@
         setupObserver();
         updatePlayers();
         showSwipeHintIfNeeded();
+
+        // Deep links for shared movies/radio stations (?movie=<id> / ?radio=<id>)
+        (function handleSharedLinks() {
+            const params = new URLSearchParams(window.location.search);
+
+            const movieId = parseInt(params.get('movie'));
+            if (!isNaN(movieId) && movies.some(m => m.id === movieId)) {
+                switchTab('movies');
+                openMoviePlayer(movieId);
+                return;
+            }
+
+            const radioId = parseInt(params.get('radio'));
+            if (!isNaN(radioId) && radioChannels.some(r => r.id === radioId)) {
+                switchTab('radio');
+                playRadioById(radioId, false);
+            }
+        })();
 
     </script>
 </body>
