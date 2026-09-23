@@ -2508,14 +2508,14 @@
             const isSaved = savedMovies.has(m.id);
             return `
                 <div class="movie-card">
-                    <div class="movie-poster-wrap" onclick="openMoviePlayer(${m.id})">
-                        <img src="${m.poster}" alt="${m.title}" loading="lazy" />
+                    <div class="movie-poster-wrap">
+                        <img src="${m.poster}" alt="${m.title}" loading="lazy" onclick="openMoviePlayer(${m.id})" />
+                        <button class="poster-save-btn${isSaved ? ' saved' : ''}" data-movie-id="${m.id}" onclick="toggleSaveMovie(event, ${m.id})" aria-label="Save movie">
+                            <svg viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z"/>
+                            </svg>
+                        </button>
                     </div>
-                    <button class="poster-save-btn${isSaved ? ' saved' : ''}" data-movie-id="${m.id}" onclick="toggleSaveMovie(event, ${m.id})" aria-label="Save movie">
-                        <svg viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 3h12a1 1 0 011 1v17l-7-4-7 4V4a1 1 0 011-1z"/>
-                        </svg>
-                    </button>
                     <div class="mc-title" onclick="openMoviePlayer(${m.id})">${m.title} (${m.year})</div>
                     <div class="mc-meta">${metaBits.join(' · ')}</div>
                 </div>
@@ -2537,6 +2537,12 @@
 
             renderMovieSources(movie, 0);
             renderMovieRecommendations(movie);
+
+            const isSaved = savedMovies.has(movie.id);
+            const playerSaveBtn = document.getElementById('movie-player-save-btn');
+            const playerSaveIcon = document.getElementById('movie-player-save-icon');
+            playerSaveBtn.classList.toggle('saved', isSaved);
+            playerSaveIcon.setAttribute('fill', isSaved ? 'currentColor' : 'none');
 
             document.getElementById('movies-view').classList.remove('visible');
             document.getElementById('movie-player-view').classList.add('visible');
