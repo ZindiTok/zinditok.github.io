@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- GitHub Pages has no real server-side routing, so a direct visit to
+         a clean path like /tv/sterktv would normally 404. This decodes the
+         path that 404.html encoded into a query string before redirecting
+         here, restoring the real clean URL via history.replaceState before
+         anything else on the page runs. Standard technique for SPA routing
+         on GitHub Pages (MIT-licensed pattern: rafgraph/spa-github-pages). -->
+    <script>
+        (function(l) {
+            if (l.search[1] === '/') {
+                var decoded = l.search.slice(1).split('&').map(function(s) {
+                    return s.replace(/~and~/g, '&');
+                }).join('?');
+                window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+            }
+        })(window.location);
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>ZindiTok</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icon-192.png">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon-192.png">
+    <link rel="apple-touch-icon" href="/icon-192.png">
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,12 +34,13 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="ZindîTok - Live Kurdish TV">
     <meta property="og:description" content="Watch live Kurdish TV channels.">
-    <meta property="og:image" content="https://koerddev.github.io/ZindiTok/sharing_image.png">
-    <meta property="og:url" content="REPLACE_WITH_ABSOLUTE_SITE_URL">
+    <meta property="og:image" content="https://zinditok.github.io/sharing_image.png">
+    <meta property="og:url" content="https://zinditok.github.io/">
+    <link rel="canonical" href="https://zinditok.github.io/">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ZindîTok - Live Kurdish TV">
     <meta name="twitter:description" content="Watch live Kurdish TV channels.">
-    <meta name="twitter:image" content="https://koerddev.github.io/ZindiTok/sharing_image.png">
+    <meta name="twitter:image" content="https://zinditok.github.io/sharing_image.png">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3392542722154116"
      crossorigin="anonymous"></script>
@@ -1325,28 +1342,18 @@
             { id: 4, name: "Nûçe TV", category: "Kurdistan News & Culture", url: "https://hlspackager.akamaized.net/live/DB/NU_TV/HLS/NU_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=nucetv.net", website: "https://nucetv.net/" },
             { id: 5, name: "Zagros24", category: "Rojhilat & Iran News", url: "https://hlspackager.akamaized.net/live/DB/ZAGROS_24/HLS/ZAGROS_24.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=zagros24.net", website: "https://zagros24.net/" },
             { id: 6, name: "Rojava", category: "Rojava News & Culture", url: "https://hlspackager.akamaized.net/live/DB/ROJAVA_HD/HLS/ROJAVA_HD.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=rojavatv.net", website: "https://rojavatv.net" },
-            { id: 7, name: "Rojhelat TV", category: "Rojhilat News & Culture", url: "https://hlspackager.akamaized.net/live/DB/ROJHELAT/HLS/ROJHELAT-avc1_2500000=10002,mp4a_128000=20000.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=rojhelat.media", website: "https://www.rojhelat.media/" },
-            { id: 8, name: "ÇiraTV", category: "Ezidi News & Culture", type: "iframe", url: "https://ok.ru/videoembed/10267254464101?autoplay=1", logo: "https://yt3.googleusercontent.com/oClAXiwBo_m56FOVdQW9gpX8Ei6XiBkLdxkNB-EGpWQbZ7yXHaJt4CQ09pS5nuJeoxm0NVyVrw=s160-c-k-c0x00ffffff-no-rj", website: "https://ciratv.com/" },
-            { id: 9, name: "Medya Haber", category: "Kurdish Media in Turkish", type: "iframe", url: "https://www.youtube.com/embed/otBzstJGtw4?autoplay=1&mute=0&rel=0&playsinline=1&enablejsapi=1", logo: "https://www.google.com/s2/favicons?sz=128&domain=medyahabertv.digital", website: "https://www.medyahabertv.digital/" },
-            { id: 10, name: "İlke TV", category: "Bakur & Turkey News", url: "https://stream.ilketv.com.tr/hls/ilkecanli.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=ilketv.com.tr", website: "https://ilketv.com.tr/" },
-            { id: 11, name: "Alyaum TV", category: "Rojava & Syria News", url: "https://hlspackager.akamaized.net/live/DB/ALYAUM_TV/HLS/ALYAUM_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=alyaumtv.net", website: "https://alyaumtv.net/" },
-            { id: 12, name: "ZarokTV", category: "Children's Channel", url: "https://zindikurmanci.zaroktv.com.tr/hls/0/stream.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=zaroktv.com.tr", website: "https://zaroktv.com.tr/" },
+            { id: 7, name: "ÇiraTV", category: "Ezidi News & Culture", type: "iframe", url: "https://ok.ru/videoembed/10267254464101?autoplay=1", logo: "https://yt3.googleusercontent.com/oClAXiwBo_m56FOVdQW9gpX8Ei6XiBkLdxkNB-EGpWQbZ7yXHaJt4CQ09pS5nuJeoxm0NVyVrw=s160-c-k-c0x00ffffff-no-rj", website: "https://ciratv.com/" },
+            { id: 8, name: "Medya Haber", category: "Kurdish Media in Turkish", type: "iframe", url: "https://www.youtube.com/embed/og3XyMupw_Q?autoplay=1&mute=0&rel=0&playsinline=1&enablejsapi=1", logo: "https://www.google.com/s2/favicons?sz=128&domain=medyahabertv.digital", website: "https://www.medyahabertv.digital/" },
+            { id: 9, name: "İlke TV", category: "Bakur & Turkey News", url: "https://stream.ilketv.com.tr/hls/ilkecanli.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=ilketv.com.tr", website: "https://ilketv.com.tr/" },
+            { id: 10, name: "Alyaum TV", category: "Rojava & Syria News", url: "https://hlspackager.akamaized.net/live/DB/ALYAUM_TV/HLS/ALYAUM_TV.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=alyaumtv.net", website: "https://alyaumtv.net/" },
+            { id: 11, name: "ZarokTV", category: "Children's Channel", url: "https://zindikurmanci.zaroktv.com.tr/hls/0/stream.m3u8", logo: "https://www.google.com/s2/favicons?sz=128&domain=zaroktv.com.tr", website: "https://zaroktv.com.tr/" },
         ];
 
         // Radio stations. Independent list from the TV channels above - the
         // Radio tab plays through a single shared <audio> element with its
         // own prev/next/play controls.
         const radioChannels = [
-            { id: 0, name: "Dirbêsiyê FM", category: "Radio based in Dirbêsiyê | Rojava", url: "https://dirbesiyefm-rojavaradio.radioca.st/stream?type=http&nocache=4", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/330969500_1538545249968472_1587887689662368328_n.jpg?stp=dst-jpg_tt6&cstp=mx1922x1922&ctp=s1922x1922&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=abznYcke3CUQ7kNvwExU7SG&_nc_oc=AdpwqdS_1Tb5v7thoQhuVqnEWkO_B-kOotTxoCRB7_0OWHrinoCSSCiD_smakU6diP06T2SZQ0ChgAkOy3FHrviY&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=EarBDfzdvXuSBAgSFpFkbg&_nc_ss=7b289&oh=00_AQJswbVl86qMKC2k3TZZY-xAMl4nft6-jYWm4giElHRXrQ&oe=6AB1947D", website: "https://dirbesiye.fm/" },
-            { id: 1, name: "Firat FM", category: "Kurdish Voices and Music", url: "https://yayin.firatfm.com/firatfm/stream", logo: "https://www.firatfm.com/wp-content/uploads/2025/12/logo.png", website: "https://www.firatfm.com/" },
-            { id: 2, name: "Mezopotamya Radyo", category: "Radio based in Mêrdîn", url: "https://anadolu.liderhost.com.tr/9404/stream", logo: "https://pbs.twimg.com/profile_images/1477329430531948548/_slIP1P4.jpg", website: "https://www.artuklumezopotamyaradyo.com/" },
-            { id: 3, name: "Radyo Denge Kurdi", category: "Kurdish Music Radio", url: "https://yayin.radyodengekurdi.com/kurdi/stream", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/605456025_1503716084949068_6129005268807761183_n.jpg?stp=dst-jpg_tt6&cstp=mx960x960&ctp=s960x960&_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=hO8HlDj_hqcQ7kNvwFlIONz&_nc_oc=AdrUHVA-iP9njG-bdGtJPdrqBrtffw9r5PmAPI2kZz6EOoXzZixQcbK0H7Bh_9q_UMU49Nvc67tkUIhKr04zhgl2&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=bb67XeeyEflxXsaG8CbJRQ&_nc_ss=7b289&oh=00_AQI168vYUgVvec0ZMmt-wTSYKTqyPWeGSJgNiOc8sKieOQ&oe=6AB38B94", website: "https://www.radyodengekurdi.com/" },
-            { id: 4, name: "Radyo Dersim", category: "Zazaki Music Radio (Might not work on Iphone)", url: "https://azurastream.radyodersim.org/radio.mp3", logo: "https://www.radyodersim.org/img/ogimage.jpg", website: "https://www.radyodersim.org/" },
-            { id: 5, name: "Radyo Munzur", category: "Radio based in Dêrsim", url: "https://radyo.yayindakiler.com:3002/stream", logo: "https://play-lh.googleusercontent.com/_ndwrLbfUIlbIOKmJru-4Tx6TlP8-1XZzRUsOs8hMim3eDueYWt_smavw60cih-XrLrrEAVEn8duW7HapzcrMCw", website: "https://www.radyomunzur.com/" },
-            { id: 6, name: "Zerguwan FM", category: "Radio based in Wan", url: "https://ip.zerguwan.com/8230/stream?nocache=1789669022440", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/728882895_1606374807745272_8312931340329451072_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x1024&ctp=s1024x1024&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=PkRKwn2OYogQ7kNvwHMCPVi&_nc_oc=AdrxW2Iy7XpInLrkI42HxhabinDIqx34Eaz7M7BrsZyfhuOsQia_ODGsvunjTTB_FXvIzMyI2jY0vm1ylcVnzh7Z&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=C6iTEUE3YcBjj7ohGoNaHA&_nc_ss=7b289&oh=00_AQKKRpYvcUeEmEVyoKAHJW1dQiXnP1-c1FvIxSf_x3bNIQ&oe=6AB21FDC", website: "https://zerguwanfm.com.tr/" },
-            { id: 7, name: "Hazar FM", category: "Radio based in Sêrt (Might not work on Iphone)", url: "https://yayin.hazarfm.com/0056/stream.mp3", logo: "https://images.keepone.net/2791-2021-01-08.png", website: "https://hazarfm.com/" },
-            { id: 8, name: "Bitlis FM", category: "Radio based in Bidlîs", url: "https://ssl22.radyotelekom.com/8172/bitlisfm", logo: "https://www.bitlisfm.com.tr/wp-content/uploads/2026/09/bitlisfm-logo.png", website: "https://www.bitlisfm.com.tr/" },
-            { id: 9, name: "Radyo Azelya", category: "Radio based in Çewlîg", url: "https://stream.turkiyeradyolari.com/8010/stream", logo: "https://scontent-ams2-1.xx.fbcdn.net/v/t39.30808-6/470606050_1016531557158097_8842674681847456618_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1463&ctp=s2048x1463&_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ZnqPG9bjShAQ7kNvwGlZZk-&_nc_oc=AdrI8ZfFtepQE1ffJfGnaqpVy1HkhmoY5ht3VclB3xzhVkAD7NQUH7eLU8-zgXvDkmSLhzzf12u5oQ6-jlWzvfZ1&_nc_zt=23&_nc_ht=scontent-ams2-1.xx&_nc_gid=NEiRJlMhKbD00tKBk5gwfA&_nc_ss=7b289&oh=00_AQI2JIzUw-LjtjcyC6O3oLC17FqCicK5YchlX5mASwBuVw&oe=6AB36B5E", website: "https://www.azelya.com.tr/" },
+            { id: 0, name: "Dirbêsiyê FM", category: "Kurdish Talk & Music Radio", url: "https://dirbesiyefm-rojavaradio.radioca.st/stream?type=http&nocache=4", logo: "https://www.google.com/s2/favicons?sz=128&domain=dirbesiye.fm", website: "https://dirbesiye.fm/" },
         ];
 
         // Movie categories are the four historic regions of Greater
@@ -1405,28 +1412,13 @@
                     { label: "EP 3: Mutlaka Kazanacağız", embed: "https://ok.ru/videoembed/1860521888485" },
                 ]
             },
-            {
-                id: 4,
-                title: "Zarê",
-                year: 1926,
-                poster: "https://m.media-amazon.com/images/M/MV5BMTQyNTE2NzA1MF5BMl5BanBnXkFtZTgwNTgyMTM2MTE@._V1_.jpg",
-                duration: "72 min",
-                language: "Kurdish",
-                category: "Kurdistana Sor",
-                type: "Film",
-                description: "Immediately prior to the Russian Revolution, a young shepherd Seydo and his girlfriend Zare struggle for their right to a happy love in a Yazidi Kurdish village in Kurdish Armenia.",
-                sources: [
-                    { label: "English Subtitles", embed: "https://www.youtube.com/embed/wJ8QXDwNkbo" },
-                    { label: "Turkish Subtitles", embed: "https://www.youtube.com/embed/LC59qLzv4Rk" },
-                ]
-            },
         ];
 
         // Lower LOOP_MULTIPLIER = fewer DOM nodes rendered up front (faster
         // first load), at the cost of the infinite-scroll illusion wrapping
         // around sooner. 16 still allows ~70 scrolls in either direction
         // before it loops - plenty for a normal session.
-        const LOOP_MULTIPLIER = 8; 
+        const LOOP_MULTIPLIER = 16; 
         const TOTAL_RENDER_COUNT = uniqueChannels.length * LOOP_MULTIPLIER;
 
         // --- Install / Add-to-Home-Screen support ---
@@ -1443,7 +1435,7 @@
         });
 
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(err => {
+            navigator.serviceWorker.register('/sw.js').catch(err => {
                 console.log('Service worker registration failed:', err);
             });
         }
@@ -1599,6 +1591,104 @@
 
             return middleBlock;
         }
+
+        // --- SEO-friendly URL routing ---
+        // Turns names into clean URL segments: "Stêrk TV" -> "sterk-tv",
+        // "Son Muhteşem Olacak" -> "son-muhtesem-olacak".
+        function slugify(str) {
+            return str
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        // Pushes a clean path into the address bar (without reloading the
+        // page) and updates the tab title to match - both help with SEO and
+        // make the URL itself shareable/bookmarkable.
+        function updateURL(path) {
+            if (window.location.pathname === path) return;
+            history.pushState({ path }, '', path);
+            updatePageMeta(path);
+        }
+
+        function updatePageMeta(path) {
+            let title = 'ZindîTok - Live Kurdish TV, Radio & Movies';
+            if (path.startsWith('/movies/') && currentMovieId !== null) {
+                const movie = movies.find(m => m.id === currentMovieId);
+                if (movie) title = `${movie.title} (${movie.year}) - ZindîTok`;
+            } else if (path === '/movies') {
+                title = 'Movies - Stream Kurdish Films & Series - ZindîTok';
+            } else if (path === '/radio') {
+                title = 'Radio - ZindîTok';
+            } else if (path.startsWith('/tv/')) {
+                const channel = uniqueChannels[currentIndex % uniqueChannels.length];
+                if (channel) title = `${channel.name} Live - ZindîTok`;
+            } else if (path === '/profile') {
+                title = 'Profile - ZindîTok';
+            }
+            document.title = title;
+
+            // Keep canonical/OG URL and description in sync with the page
+            // being shown, so each route presents itself as its own page.
+            const fullUrl = window.location.origin + path;
+            let canonical = document.querySelector('link[rel="canonical"]');
+            if (canonical) canonical.setAttribute('href', fullUrl);
+            const ogUrl = document.querySelector('meta[property="og:url"]');
+            if (ogUrl) ogUrl.setAttribute('content', fullUrl);
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            if (ogTitle) ogTitle.setAttribute('content', title);
+
+            let desc = 'Watch live Kurdish TV channels, listen to Kurdish radio and stream films from Kurdistan on ZindîTok.';
+            if (path.startsWith('/movies/') && currentMovieId !== null) {
+                const movie = movies.find(m => m.id === currentMovieId);
+                if (movie) desc = movie.description;
+            }
+            let descTag = document.querySelector('meta[name="description"]');
+            if (!descTag) {
+                descTag = document.createElement('meta');
+                descTag.setAttribute('name', 'description');
+                document.head.appendChild(descTag);
+            }
+            descTag.setAttribute('content', desc);
+        }
+
+        // Reads the current path and opens the matching tab/item. Used on
+        // first load and whenever the user hits the browser's back/forward
+        // buttons. The "push" flag on the functions it calls is set to
+        // false here since the URL already reflects where we're going -
+        // no need to push it again.
+        function handleRoute() {
+            let path = window.location.pathname;
+            if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+            const parts = path.split('/').filter(Boolean);
+
+            if (parts[0] === 'movies') {
+                switchTab('movies', false);
+                if (parts[1]) {
+                    const movie = movies.find(m => slugify(m.title) === parts[1]);
+                    if (movie) openMoviePlayer(movie.id, false);
+                }
+            } else if (parts[0] === 'radio') {
+                switchTab('radio', false);
+            } else if (parts[0] === 'tv') {
+                if (parts[1]) {
+                    const channel = uniqueChannels.find(c => slugify(c.name) === parts[1]);
+                    if (channel) {
+                        jumpToChannel(channel.id, false);
+                        return;
+                    }
+                }
+                switchTab('channels', false);
+            } else if (parts[0] === 'profile') {
+                switchTab('profile', false);
+            } else {
+                switchTab('channels', false);
+            }
+            updatePageMeta(path);
+        }
+
+        window.addEventListener('popstate', handleRoute);
 
         let currentIndex = getInitialIndex();
         let isMuted = localStorage.getItem('zinditok_muted') !== 'false';
@@ -2003,6 +2093,15 @@
                             dismissSwipeHint();
                             const channel = uniqueChannels[newIndex % uniqueChannels.length];
                             localStorage.setItem('zinditok_last_channel', channel.id);
+
+                            // Let the address bar follow the swipe. replaceState
+                            // (not pushState) so swiping through channels
+                            // doesn't fill up the browser's back-button history.
+                            if (appContainer.style.display !== 'none') {
+                                const tvPath = `/tv/${slugify(channel.name)}`;
+                                history.replaceState({ path: tvPath }, '', tvPath);
+                                updatePageMeta(tvPath);
+                            }
                         }
                     }
                 });
@@ -2104,7 +2203,7 @@
             const movie = movies.find(m => m.id === id);
             if (!movie) return;
 
-            const shareUrl = `${window.location.href.split('?')[0]}?movie=${movie.id}`;
+            const shareUrl = `${window.location.origin}/movies/${slugify(movie.title)}`;
             const shareData = {
                 title: `Watch ${movie.title} on ZindîTok`,
                 text: `Check out ${movie.title} (${movie.year}) on ZindîTok!`,
@@ -2164,7 +2263,7 @@
             const station = radioChannels[radioIndex];
             if (!station) return;
 
-            const shareUrl = `${window.location.href.split('?')[0]}?radio=${station.id}`;
+            const shareUrl = `${window.location.origin}/radio`;
             const shareData = {
                 title: `Listen to ${station.name} with me on ZindîTok`,
                 text: `Tune in to ${station.name} together on ZindîTok!`,
@@ -2249,8 +2348,8 @@
         function shareChannel(event, index) {
             if (event) event.stopPropagation();
             const channel = uniqueChannels[index % uniqueChannels.length];
-            const baseUrl = window.location.href.split('?')[0];
-            const shareUrl = `${baseUrl}?channel=${channel.id}`;
+            const origin = window.location.origin;
+            const shareUrl = `${origin}/tv/${slugify(channel.name)}`;
             const shareData = {
                 title: `Watch ${channel.name} Live`,
                 text: `Check out ${channel.name} streaming live!`,
@@ -2411,7 +2510,7 @@
         // playing so audio doesn't keep running in the background while
         // browsing another tab; returning to Channels resumes it via the
         // normal updatePlayers() flow.
-        function switchTab(tab) {
+        function switchTab(tab, push = true) {
             document.getElementById('nav-channels').classList.toggle('active', tab === 'channels');
             document.getElementById('nav-radio').classList.toggle('active', tab === 'radio');
             document.getElementById('nav-movies').classList.toggle('active', tab === 'movies');
@@ -2429,6 +2528,7 @@
                 moviesView.classList.remove('visible');
                 moviePlayerView.classList.remove('visible');
                 updatePlayers();
+                if (push) updateURL('/');
             } else {
                 appContainer.style.display = 'none';
                 // Fully release every currently-loaded TV stream (not just
@@ -2454,6 +2554,7 @@
                     renderMovieCategories();
                     renderMovieGrid();
                 }
+                if (push) updateURL(tab === 'profile' ? '/profile' : `/${tab}`);
             }
         }
 
@@ -2483,13 +2584,14 @@
 
         // Jumps back to the Channels tab, scrolled directly to the tapped
         // followed channel.
-        function jumpToChannel(channelId) {
+        function jumpToChannel(channelId, push = true) {
             const middleBlock = Math.floor(LOOP_MULTIPLIER / 2) * uniqueChannels.length;
             const pos = uniqueChannels.findIndex(c => c.id === channelId);
             if (pos === -1) return;
             currentIndex = middleBlock + pos;
-            switchTab('channels');
+            switchTab('channels', false);
             document.getElementById(`container-${currentIndex}`).scrollIntoView({ behavior: 'auto' });
+            if (push) updateURL(`/tv/${slugify(uniqueChannels[pos].name)}`);
         }
 
         // --- Movies tab ---
@@ -2549,7 +2651,7 @@
 
         let currentMovieId = null;
 
-        function openMoviePlayer(movieId) {
+        function openMoviePlayer(movieId, push = true) {
             const movie = movies.find(m => m.id === movieId);
             if (!movie) return;
             currentMovieId = movieId;
@@ -2572,6 +2674,8 @@
             document.getElementById('movies-view').classList.remove('visible');
             document.getElementById('movie-player-view').classList.add('visible');
             document.getElementById('movie-player-view').scrollTop = 0;
+
+            if (push) updateURL(`/movies/${slugify(movie.title)}`);
         }
 
         function renderMovieSources(movie, activeIndex) {
@@ -2602,6 +2706,7 @@
             document.getElementById('movie-player-frame').src = '';
             document.getElementById('movie-player-view').classList.remove('visible');
             document.getElementById('movies-view').classList.add('visible');
+            updateURL('/movies');
         }
 
         initDOM();
@@ -2611,23 +2716,36 @@
         updatePlayers();
         showSwipeHintIfNeeded();
 
-        // Deep links for shared movies/radio stations (?movie=<id> / ?radio=<id>)
-        (function handleSharedLinks() {
+        // Clean path-based routing (/, /movies, /movies/<name>, /radio,
+        // /tv/<name>, /profile). Backward-compatible with any links already
+        // shared using the old ?channel=/?movie=/?radio= query params -
+        // those get normalized into the new clean path via replaceState
+        // before the router runs, so old links keep working without ever
+        // showing the ugly query-string version.
+        (function migrateLegacyQueryLinks() {
             const params = new URLSearchParams(window.location.search);
+            let legacyPath = null;
 
+            const channelId = parseInt(params.get('channel'));
+            if (!isNaN(channelId)) {
+                const channel = uniqueChannels.find(c => c.id === channelId);
+                if (channel) legacyPath = `/tv/${slugify(channel.name)}`;
+            }
             const movieId = parseInt(params.get('movie'));
-            if (!isNaN(movieId) && movies.some(m => m.id === movieId)) {
-                switchTab('movies');
-                openMoviePlayer(movieId);
-                return;
+            if (!isNaN(movieId)) {
+                const movie = movies.find(m => m.id === movieId);
+                if (movie) legacyPath = `/movies/${slugify(movie.title)}`;
+            }
+            if (params.has('radio')) {
+                legacyPath = '/radio';
             }
 
-            const radioId = parseInt(params.get('radio'));
-            if (!isNaN(radioId) && radioChannels.some(r => r.id === radioId)) {
-                switchTab('radio');
-                playRadioById(radioId, false);
+            if (legacyPath) {
+                history.replaceState(null, '', legacyPath);
             }
         })();
+
+        handleRoute();
 
     </script>
 </body>
